@@ -1,0 +1,55 @@
+{
+   "MethodV1Orders": {
+      "Properties": {
+         "HttpMethod": "GET",
+         "Integration": {
+            "Type": "MOCK"
+         },
+         "ResourceId": {
+            "Ref": "MethodV1Orders"
+         },
+         "RestApiId": "example_api_id"
+      },
+      "Type": "AWS::ApiGateway::Method"
+   },
+   "MethodV1OrdersOrder_id": {
+      "Properties": {
+         "HttpMethod": "POST",
+         "Integration": {
+            "Type": "MOCK"
+         },
+         "ResourceId": {
+            "Ref": "MethodV1OrdersOrder_id"
+         },
+         "RestApiId": "example_api_id"
+      },
+      "Type": "AWS::ApiGateway::Method"
+   },
+   "ResourceV1": {
+      "Properties": {
+         "ParentId": {
+            "Ref": "example_root_resource_id"
+         },
+         "RestApiId": "example_api_id"
+      },
+      "Type": "AWS::ApiGateway::Resource"
+   },
+   "ResourceV1Orders": {
+      "Properties": {
+         "ParentId": {
+            "Ref": "ResourceV1Orders"
+         },
+         "RestApiId": "example_api_id"
+      },
+      "Type": "AWS::ApiGateway::Resource"
+   },
+   "ResourceV1OrdersOrder_id": {
+      "Properties": {
+         "ParentId": {
+            "Ref": "ResourceV1OrdersOrder_id"
+         },
+         "RestApiId": "example_api_id"
+      },
+      "Type": "AWS::ApiGateway::Resource"
+   }
+}
