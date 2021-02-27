@@ -10,6 +10,7 @@ local newResource(restApiId, path, rootResourceId=null, props={}) = {
   definition:: {
     Type: 'AWS::ApiGateway::Resource',
     Properties: {
+      PathPart: strutil.splitPath(path)[std.length(strutil.splitPath(path))- 1],
       ParentId: {
         Ref:
           if std.length(std.filter(function(x) x != '', strutil.splitPath(path))) - 1 > 0

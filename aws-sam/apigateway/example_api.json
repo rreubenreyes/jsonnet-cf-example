@@ -30,6 +30,7 @@
          "ParentId": {
             "Ref": "example_root_resource_id"
          },
+         "PathPart": "v1",
          "RestApiId": "example_api_id"
       },
       "Type": "AWS::ApiGateway::Resource"
@@ -39,6 +40,7 @@
          "ParentId": {
             "Ref": "ResourceV1Orders"
          },
+         "PathPart": "orders",
          "RestApiId": "example_api_id"
       },
       "Type": "AWS::ApiGateway::Resource"
@@ -48,6 +50,7 @@
          "ParentId": {
             "Ref": "ResourceV1OrdersOrder_id"
          },
+         "PathPart": "{order_id}",
          "RestApiId": "example_api_id"
       },
       "Type": "AWS::ApiGateway::Resource"
