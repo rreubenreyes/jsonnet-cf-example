@@ -6,7 +6,7 @@
             "Type": "MOCK"
          },
          "ResourceId": {
-            "Ref": "MethodV1Orders"
+            "Ref": "ResourceV1Orders"
          },
          "RestApiId": "example_api_id"
       },
@@ -19,7 +19,7 @@
             "Type": "MOCK"
          },
          "ResourceId": {
-            "Ref": "MethodV1OrdersOrder_id"
+            "Ref": "ResourceV1OrdersOrder_id"
          },
          "RestApiId": "example_api_id"
       },

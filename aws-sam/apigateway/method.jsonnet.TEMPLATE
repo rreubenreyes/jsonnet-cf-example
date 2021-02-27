@@ -4,7 +4,7 @@ local toLogicalId(path) = 'Method' + strutil.pathToTitleCase(
   strutil.splitPath(path), std.length(strutil.splitPath(path))
 );
 
-local toResourceLogicalId(path) = 'Method' + strutil.pathToTitleCase(
+local toResourceLogicalId(path) = 'Resource' + strutil.pathToTitleCase(
   strutil.splitPath(path), std.length(strutil.splitPath(path))
 );
 
