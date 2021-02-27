@@ -4,6 +4,10 @@ local toLogicalId(path) = 'Method' + strutil.pathToTitleCase(
   strutil.splitPath(path), std.length(strutil.splitPath(path))
 );
 
+local toResourceLogicalId(path) = 'Method' + strutil.pathToTitleCase(
+  strutil.splitPath(path), std.length(strutil.splitPath(path))
+);
+
 local newMethod(restApiId, path, rootResourceId=null, props={}) = {
   logicalId:: toLogicalId(path),
   definition:: {
@@ -13,7 +17,7 @@ local newMethod(restApiId, path, rootResourceId=null, props={}) = {
         Ref:
           if std.length(std.filter(function(x) x != '', strutil.splitPath(path))) - 1 > 0
           then
-            toLogicalId(path)
+            toResourceLogicalId(path)
           else
             rootResourceId,
       },
