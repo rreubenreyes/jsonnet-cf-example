@@ -1,0 +1,33 @@
+local strutil = import './strutil.jsonnet';
+
+local toLogicalId(path) = 'Resource'
+  + strutil.pathToTitleCase(strutil.splitPath(path), std.length(strutil.splitPath(path)));
+
+local newResource(restApiId, path, rootResourceId=null, props={}) = {
+  path:: path,
+  ref:: { Ref: toLogicalId(path) },
+  logicalId:: toLogicalId(path),
+  definition:: {
+    Type: 'AWS::ApiGateway::Resource',
+    Properties: {
+      ParentId: {
+        Ref:
+          if std.length(std.filter(function(x) x != '', strutil.splitPath(path))) - 1 > 0
+          then
+            'Resource' + strutil.pathToTitleCase(strutil.splitPath(path), std.length(strutil.splitPath(path)) - 1)
+          else
+            rootResourceId,
+      },
+      RestApiId: restApiId,
+    } + props,
+  },
+
+};
+
+local asRef(path) = {
+  Ref: toLogicalId(path),
+};
+
+{
+  newResource:: newResource,
+}

@@ -1,0 +1,27 @@
+local strutil = import './strutil.jsonnet';
+
+local toLogicalId(path) = 'Method' + strutil.pathToTitleCase(
+  strutil.splitPath(path), std.length(strutil.splitPath(path))
+);
+
+local newMethod(restApiId, path, rootResourceId=null, props={}) = {
+  logicalId:: toLogicalId(path),
+  definition:: {
+    Type: 'AWS::ApiGateway::Method',
+    Properties: {
+      ResourceId: {
+        Ref:
+          if std.length(std.filter(function(x) x != '', strutil.splitPath(path))) - 1 > 0
+          then
+            toLogicalId(path)
+          else
+            rootResourceId,
+      },
+      RestApiId: restApiId,
+    } + props,
+  },
+};
+
+{
+  newMethod:: newMethod,
+}
