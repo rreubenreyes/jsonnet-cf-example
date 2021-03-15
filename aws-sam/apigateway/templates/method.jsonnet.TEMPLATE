@@ -1,4 +1,4 @@
-local strutil = import './strutil.jsonnet';
+local strutil = import 'strutil.libsonnet';
 
 local toLogicalId(path) = 'Method' + strutil.pathToTitleCase(
   strutil.splitPath(path), std.length(strutil.splitPath(path))
